@@ -6,7 +6,7 @@ Full documentation: https://github.com/proBieri/dingz-ha-bridge/tree/main/docs/e
 
 ## Requirements
 
-- The Mosquitto add-on (or another broker used by the MQTT integration).
+- An MQTT broker: either the Mosquitto add-on (used automatically) or an external broker set with the `mqtt_*` options.
 - The dingz publish to this broker. Set this up per device in the **dingz** panel (sidebar). Enter the broker's **LAN address** (not `core-mosquitto`), ideally with a dedicated broker user for the dingz.
 
 ## Options
@@ -19,12 +19,16 @@ Full documentation: https://github.com/proBieri/dingz-ha-bridge/tree/main/docs/e
 | `log_level` | `debug`, `info`, `warning`, `error`. |
 | `update_check` | Show in the panel whether a newer version is available on GitHub (checked every 6 h). |
 | `temperature_filter` | Drop the floored whole-degree temperatures of the dingz status dump (avoids a saw-tooth in the history). |
+| `mqtt_host` | Only for an external broker: hostname or IP. Empty = broker of the Mosquitto add-on. |
+| `mqtt_port` | Broker port, 1883 without TLS, usually 8883 with TLS. |
+| `mqtt_username`, `mqtt_password` | Broker credentials. |
+| `mqtt_tls` | Use TLS for the external broker. |
 | `mqtt_ca_file` | Only for TLS with an own CA: path to the CA file (PEM) below `/ssl`, e.g. `/ssl/mqtt-ca.pem`. |
 | `mqtt_tls_insecure` | Testing only: do not verify the broker certificate. |
 
 ## Notes
 
-- TLS to the broker follows the MQTT integration (Supervisor). With an own CA, copy it to `/ssl` and set `mqtt_ca_file`.
+- With the Mosquitto add-on, TLS follows the Supervisor; with an external broker it follows `mqtt_tls`. With an own CA, copy it to `/ssl` and set `mqtt_ca_file`.
 - The panel is available in English and German (browser language).
 
 - The panel (ingress) lists the dingz on the network (mDNS, MQTT), shows their status, WLAN signal and MQTT activity, and sets their MQTT broker.

@@ -60,3 +60,43 @@ def test_cli_applies_addon_settings(supervisor: Path) -> None:
     assert (args.ui, args.ui_bind, args.ingress_only) == (True, "0.0.0.0", True)
     web_config = cli._web_config(cli.build_parser(), args)
     assert web_config.ingress_only
+
+
+def test_external_broker_from_options(supervisor: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    supervisor.write_text(
+        json.dumps(
+            {
+                "mqtt_host": "10.0.10.11",
+                "mqtt_port": 8883,
+                "mqtt_username": "bridge",
+                "mqtt_password": "secret",
+                "mqtt_tls": True,
+                "mqtt_ca_file": "/ssl/mqtt-ca.pem",
+            }
+        )
+    )
+
+    def no_supervisor(path: str) -> dict:
+        raise AssertionError("Supervisor must not be asked when mqtt_host is set")
+
+    monkeypatch.setattr(addon, "_supervisor_get", no_supervisor)
+    settings = addon.load_settings()
+    assert (settings.mqtt_host, settings.mqtt_port, settings.mqtt_tls) == ("10.0.10.11", 8883, True)
+    assert (settings.mqtt_username, settings.mqtt_password) == ("bridge", "secret")
+    assert settings.mqtt_ca_file == "/ssl/mqtt-ca.pem"
+
+
+def test_empty_mqtt_host_uses_supervisor(supervisor: Path) -> None:
+    supervisor.write_text(json.dumps({"mqtt_host": "  ", "mqtt_port": 1883}))
+    assert addon.load_settings().mqtt_host == "core-mosquitto"
+
+
+def test_no_broker_gives_clear_error(supervisor: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    def bad_request(path: str) -> dict:
+        raise addon.AddonConfigError(f"Supervisor request {path} failed: HTTP Error 400")
+
+    monkeypatch.setattr(addon, "_supervisor_get", bad_request)
+    with pytest.raises(addon.AddonConfigError, match="mqtt_host"):
+        addon.load_settings()
+    with pytest.raises(SystemExit, match="mqtt_host"):
+        cli.main(["run"])

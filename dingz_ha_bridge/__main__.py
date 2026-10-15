@@ -202,7 +202,10 @@ def main(argv: Sequence[str] | None = None) -> None:
     args = parser.parse_args(args_list)
 
     if args.command == "run" and addon.is_addon() and not args.host:
-        _apply_addon_settings(args)
+        try:
+            _apply_addon_settings(args)
+        except addon.AddonConfigError as err:
+            sys.exit(f"error: {err}")
 
     logging.basicConfig(
         level=args.log_level.upper(), format="%(asctime)s %(levelname)s %(name)s: %(message)s"

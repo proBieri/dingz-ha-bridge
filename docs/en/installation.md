@@ -47,7 +47,7 @@ Check: `mosquitto_sub -h <broker> -u … -P … -v -t 'dingz/#'` should show mes
 
 Notes:
 
-- The bridge's MQTT credentials come from the Supervisor (`services: mqtt:need`). The Mosquitto add-on (or another broker used by the MQTT integration) must be set up.
+- With the **Mosquitto add-on** as broker, the add-on gets the credentials automatically (`services: mqtt:want`). With an **external broker** (anything else, incl. a broker only configured in the MQTT integration), set `mqtt_host`, `mqtt_username`, `mqtt_password` in the add-on options — the add-on cannot read the MQTT integration's settings.
 - The add-on runs in the **host network** so that mDNS discovery works. The web UI still only answers requests coming through HA ingress.
 - If the MQTT integration uses TLS, the add-on does too. For an own CA, copy it to `/ssl` and set the option `mqtt_ca_file`.
 - The add-on pulls prebuilt images from `ghcr.io/probieri/dingz-ha-bridge-{arch}` (amd64, aarch64). Repository and images must be public.

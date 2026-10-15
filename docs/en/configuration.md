@@ -76,12 +76,16 @@ Boolean variables: `DINGZ_UI`, `DINGZ_MQTT_TLS` and `DINGZ_MQTT_TLS_INSECURE` ar
 | `log_level` | `info` | `debug`, `info`, `warning`, `error` |
 | `update_check` | `true` | GitHub update check |
 | `temperature_filter` | `true` | temperature filter (`false` equals `--no-temperature-filter`) |
+| `mqtt_host` | empty | **external broker** host/IP. Empty → use the Mosquitto add-on's broker |
+| `mqtt_port` | `1883` | external broker port |
+| `mqtt_username`, `mqtt_password` | empty | external broker credentials |
+| `mqtt_tls` | `false` | use TLS for the external broker |
 | `mqtt_ca_file` | empty | CA file for TLS with an own CA, e.g. `/ssl/mqtt-ca.pem` (the add-on can read `/ssl`) |
 | `mqtt_tls_insecure` | `false` | do not verify the broker certificate – testing only |
 
 Fixed in the add-on:
 
-- MQTT credentials from the Supervisor (MQTT integration / Mosquitto add-on), including whether TLS is used.
+- MQTT broker: the `mqtt_*` options if `mqtt_host` is set (external broker), otherwise the Supervisor's MQTT service (provided by the Mosquitto add-on). The add-on **cannot** read the broker settings of the MQTT integration — an external broker must be entered in the options.
 - Web UI always on, port 8099, reachable through ingress only.
 - Host network for mDNS.
 

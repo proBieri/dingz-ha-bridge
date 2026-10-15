@@ -16,6 +16,19 @@ configuration:
   temperature_filter:
     name: Temperaturfilter
     description: Die auf ganze Grad abgerundeten Werte aus dem periodischen Statusdump der dingz verwerfen (verhindert ein Sägezahnmuster). Der Temperatursensor braucht dann die laufende Bridge.
+  mqtt_host:
+    name: Broker-Adresse
+    description: "Nur für einen externen Broker (ohne Mosquitto-Add-on): Hostname oder IP, z. B. 10.0.10.11. Leer = Broker des Mosquitto-Add-ons."
+  mqtt_port:
+    name: Broker-Port
+    description: "1883 ohne TLS, meist 8883 mit TLS."
+  mqtt_username:
+    name: Broker-Benutzer
+  mqtt_password:
+    name: Broker-Passwort
+  mqtt_tls:
+    name: TLS verwenden
+    description: "Verbindung zum externen Broker per TLS. Bei eigener CA zusätzlich die CA-Datei angeben."
   mqtt_ca_file:
     name: CA-Datei des Brokers
     description: "Nur bei TLS mit eigener CA: Pfad zur CA-Datei (PEM), z. B. /ssl/mqtt-ca.pem."

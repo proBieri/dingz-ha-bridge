@@ -1,5 +1,5 @@
 name: dingz HA Bridge
-version: "0.1.0"
+version: "0.1.1"
 slug: dingz_ha_bridge
 description: dingz switches (iolo) in Home Assistant via MQTT discovery
 url: https://github.com/proBieri/dingz-ha-bridge
@@ -14,8 +14,9 @@ init: true
 # mDNS (device scan) needs the host network. The web UI port is only answered for
 # requests coming through ingress.
 host_network: true
+# Broker from the Mosquitto add-on if present, otherwise from the mqtt_* options.
 services:
-  - mqtt:need
+  - mqtt:want
 # Read-only access to /ssl for a custom broker CA (option mqtt_ca_file).
 map:
   - ssl
@@ -30,6 +31,11 @@ options:
   log_level: info
   update_check: true
   temperature_filter: true
+  mqtt_host: ""
+  mqtt_port: 1883
+  mqtt_username: ""
+  mqtt_password: ""
+  mqtt_tls: false
   mqtt_ca_file: ""
   mqtt_tls_insecure: false
 schema:
@@ -39,5 +45,10 @@ schema:
   log_level: list(debug|info|warning|error)
   update_check: bool
   temperature_filter: bool
+  mqtt_host: str?
+  mqtt_port: port
+  mqtt_username: str?
+  mqtt_password: password?
+  mqtt_tls: bool
   mqtt_ca_file: str?
   mqtt_tls_insecure: bool

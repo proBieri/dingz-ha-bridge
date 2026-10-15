@@ -76,12 +76,16 @@ Boolesche Variablen: `DINGZ_UI`, `DINGZ_MQTT_TLS` und `DINGZ_MQTT_TLS_INSECURE` 
 | `log_level` | `info` | `debug`, `info`, `warning`, `error` |
 | `update_check` | `true` | Update-Check bei GitHub |
 | `temperature_filter` | `true` | Temperaturfilter (`false` entspricht `--no-temperature-filter`) |
+| `mqtt_host` | leer | Host/IP eines **externen Brokers**. Leer → Broker des Mosquitto-Add-ons |
+| `mqtt_port` | `1883` | Port des externen Brokers |
+| `mqtt_username`, `mqtt_password` | leer | Zugangsdaten des externen Brokers |
+| `mqtt_tls` | `false` | TLS für den externen Broker |
 | `mqtt_ca_file` | leer | CA-Datei bei TLS mit eigener CA, z. B. `/ssl/mqtt-ca.pem` (das Add-on kann `/ssl` lesen) |
 | `mqtt_tls_insecure` | `false` | Zertifikat des Brokers nicht prüfen – nur zum Testen |
 
 Fest eingestellt im Add-on:
 
-- MQTT-Zugangsdaten vom Supervisor (MQTT-Integration / Mosquitto-Add-on), inklusive der Angabe, ob TLS verwendet wird.
+- MQTT-Broker: die `mqtt_*`-Optionen, wenn `mqtt_host` gesetzt ist (externer Broker), sonst der MQTT-Service des Supervisors (vom Mosquitto-Add-on). Das Add-on **kann** die Broker-Einstellungen der MQTT-Integration **nicht** auslesen — ein externer Broker muss in den Optionen eingetragen werden.
 - Weboberfläche immer an, Port 8099, nur über Ingress erreichbar.
 - Host-Netzwerk für mDNS.
 
