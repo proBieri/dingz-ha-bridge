@@ -1,5 +1,5 @@
 name: dingz HA Bridge
-version: "0.1.1"
+version: "0.1.2"
 slug: dingz_ha_bridge
 description: dingz switches (iolo) in Home Assistant via MQTT discovery
 url: https://github.com/proBieri/dingz-ha-bridge
@@ -23,7 +23,7 @@ map:
 ingress: true
 ingress_port: 8099
 panel_icon: mdi:light-switch
-panel_title: dingz
+panel_title: Dingz
 options:
   id_prefix: dingz
   name_prefix: ""

@@ -18,6 +18,7 @@ The web UI lists all dingz on the network, shows their state and sets up their M
 
 - Bridge version.
 - **GitHub ↗** – link to the repository.
+- In the add-on, a **← Add-ons** link (top left) returns to the add-on dashboard; enable **Show in sidebar** on the add-on page to keep the panel in the HA sidebar.
 - **Update status**: “Update available: vX.Y.Z ↗” (linking to the release), “up to date” or a note why the check was not possible. The bridge asks GitHub at most every 6 hours; disable with `--no-update-check` / `DINGZ_UPDATE_CHECK=0` / add-on option `update_check`.
 
 ## Device list

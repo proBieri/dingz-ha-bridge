@@ -9,7 +9,7 @@ const QUALITY_CLASS = { excellent: "ok", good: "ok", fair: "warn", poor: "bad" }
 // UI texts. German if the browser prefers German, English otherwise.
 const I18N = {
   en: {
-    rescan: "Rescan", subnetPlaceholder: "Optional subnet, e.g. 192.168.1.0/24",
+    rescan: "Rescan", subnetPlaceholder: "Optional subnet, e.g. 192.168.1.0/24", backToAddons: "Add-ons",
     colName: "Name", colModel: "Model", colMqttId: "MQTT ID", colWifi: "WLAN", colHa: "In HA",
     colSources: "Found via", noDevices: "No dingz found.",
     setBroker: "Set MQTT broker",
@@ -36,7 +36,7 @@ const I18N = {
     u_not_public: "update check: repository not public or not found", u_no_release: "no release yet",
   },
   de: {
-    rescan: "Neu scannen", subnetPlaceholder: "Subnetz optional, z. B. 192.168.1.0/24",
+    rescan: "Neu scannen", subnetPlaceholder: "Subnetz optional, z. B. 192.168.1.0/24", backToAddons: "Add-ons",
     colName: "Name", colModel: "Modell", colMqttId: "MQTT-ID", colWifi: "WLAN", colHa: "In HA",
     colSources: "Gefunden über", noDevices: "Keine dingz gefunden.",
     setBroker: "MQTT-Broker setzen",
@@ -422,6 +422,9 @@ async function loadVersion() {
 }
 
 translatePage();
+// Under HA ingress, offer a link back to the add-on dashboard (the page is same-origin
+// with the HA frontend, so target=_top navigates the whole HA tab).
+if (location.pathname.includes("/api/hassio_ingress/")) $("ha-back").hidden = false;
 $("scan").addEventListener("click", rescan);
 poll();
 loadVersion();

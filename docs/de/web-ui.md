@@ -18,6 +18,7 @@ Die Weboberfläche zeigt alle dingz im Netz, ihren Zustand und richtet ihre MQTT
 
 - Version der Bridge.
 - **GitHub ↗** – Link auf das Repository.
+- Im Add-on führt links oben ein **← Add-ons**-Link zurück zur Add-on-Übersicht; mit **In Seitenleiste anzeigen** auf der Add-on-Seite bleibt das Panel in der HA-Seitenleiste.
 - **Update-Status**: „Update verfügbar: vX.Y.Z ↗“ (mit Link auf das Release), „aktuell“ oder ein Hinweis, warum nicht geprüft werden konnte. Die Bridge fragt GitHub höchstens alle 6 Stunden; abschaltbar mit `--no-update-check` / `DINGZ_UPDATE_CHECK=0` / Add-on-Option `update_check`.
 
 ## Geräteliste

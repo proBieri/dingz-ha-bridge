@@ -20,3 +20,7 @@ First release.
 
 - Support an external MQTT broker via the `mqtt_host` / `mqtt_username` / `mqtt_password` / `mqtt_tls` options; the add-on no longer requires the Mosquitto add-on.
 - Start cleanly (`services: mqtt:want`) and show a clear message instead of a traceback when no broker is configured.
+
+## 0.1.2
+
+- Web UI: a "← Add-ons" link back to the add-on dashboard when opened through Home Assistant ingress.

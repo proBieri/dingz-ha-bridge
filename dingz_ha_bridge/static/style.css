@@ -38,6 +38,8 @@ header, main { max-width: 1100px; margin: 0 auto; padding: 16px; }
 header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; }
 .header-links { margin-left: auto; display: flex; gap: 12px; align-items: baseline; font-size: 13px; }
 a.update { font-weight: 600; color: var(--warn); }
+a.back { font-size: 13px; text-decoration: none; margin-right: 4px; }
+a.back:hover { text-decoration: underline; }
 h1 { font-size: 20px; margin: 0; }
 h2 { font-size: 17px; margin: 0 0 8px; }
 h3 { font-size: 15px; margin: 20px 0 4px; }
