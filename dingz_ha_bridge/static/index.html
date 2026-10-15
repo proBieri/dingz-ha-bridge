@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dingz HA Bridge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Texts are English by default and translated by app.js (data-i18n keys). -->
+  <header>
+    <h1>dingz HA Bridge</h1>
+    <span id="version" class="muted"></span>
+    <span class="header-links">
+      <a id="repo-link" href="https://github.com/proBieri/dingz-ha-bridge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <span id="update" class="muted"></span>
+    </span>
+  </header>
+
+  <main>
+    <section class="toolbar">
+      <button id="scan" data-i18n="rescan">Rescan</button>
+      <input id="subnet" data-i18n-placeholder="subnetPlaceholder" placeholder="Optional subnet, e.g. 192.168.1.0/24" autocomplete="off">
+      <span id="scan-info" class="muted"></span>
+    </section>
+
+    <p id="error" class="error" hidden></p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-i18n="colName">Name</th><th>IP</th><th data-i18n="colModel">Model</th><th>FW</th>
+            <th data-i18n="colMqttId">MQTT ID</th><th>MQTT</th><th data-i18n="colWifi">WLAN</th>
+            <th data-i18n="colHa">In HA</th><th data-i18n="colSources">Found via</th>
+          </tr>
+        </thead>
+        <tbody id="devices"></tbody>
+      </table>
+    </div>
+    <p id="empty" class="muted" data-i18n="noDevices" hidden>No dingz found.</p>
+
+    <section id="detail" hidden>
+      <h2 id="detail-title"></h2>
+      <p id="detail-link"></p>
+      <dl id="detail-status"></dl>
+
+      <h3 data-i18n="setBroker">Set MQTT broker</h3>
+      <p class="muted" data-i18n="setBrokerHint">Address as the dingz reaches the broker. Ideally a dedicated broker user for the dingz.</p>
+      <form id="mqtt-form" autocomplete="off">
+        <label><span>Broker</span> <input name="broker" required></label>
+        <label><span>Port</span> <input name="port" type="number" value="1883" min="1" max="65535"></label>
+        <label><span data-i18n="user">User</span> <input name="username"></label>
+        <label><span data-i18n="password">Password</span> <input name="password" type="password" autocomplete="new-password"></label>
+        <label class="inline"><input name="enable" type="checkbox" checked> <span data-i18n="mqttEnabled">MQTT enabled</span></label>
+        <button type="submit" data-i18n="apply">Apply</button>
+      </form>
+      <p id="mqtt-result"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

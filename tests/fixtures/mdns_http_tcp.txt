@@ -1,0 +1,3 @@
+# dns-sd -L "DINGZ 000001" _http._tcp local.  (FW 2.4.3, anonymisiert)
+DINGZ\032000001._http._tcp.local. can be reached at DINGZ-dz1f-4b-246F28000001.local.:80
+ cp=true identify_flag=false fw=2.4.3 protected=false pir=false colour=WH home= id=dingztest room=Room name=Dingz\ Test mac=246F28000001

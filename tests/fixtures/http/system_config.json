@@ -1,0 +1,54 @@
+{
+  "rest_password": false,
+  "protected_status": false,
+  "allow_reset": true,
+  "allow_wps": true,
+  "allow_reboot": true,
+  "allow_remote_reboot": true,
+  "allow_update": true,
+  "origin": true,
+  "upgrade_blink": true,
+  "reboot_blink": true,
+  "dingz_name": "Dingz Test",
+  "room_name": "Room",
+  "home_name": "",
+  "id": "dingztest",
+  "temp_offset": 6,
+  "fet_offset": 1.1666666666666667,
+  "cpu_offset": 25.4,
+  "temp_comp": {
+    "fet_offset": 2.64,
+    "gain_up": 0.012,
+    "gain_down": 0.006,
+    "gain_total": 0.25,
+    "idle_offset": 0,
+    "front_offset": 15,
+    "inf_factor": 0.5
+  },
+  "sun_offset": 0,
+  "tzid": 0,
+  "lat": 47.0,
+  "long": 8.0,
+  "dyn_light": {
+    "enable": false,
+    "phases": 3,
+    "source": "sun",
+    "sun_offset": {
+      "day": 30,
+      "twilight": 30,
+      "night": 30
+    }
+  },
+  "wifi_ps": true,
+  "new_comp_alg": false,
+  "time": "2026-10-15 10:20:07",
+  "sunrise": {
+    "hour": 7,
+    "minute": 47
+  },
+  "sunset": {
+    "hour": 18,
+    "minute": 47
+  },
+  "system_status": "OK"
+}

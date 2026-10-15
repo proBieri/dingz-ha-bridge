@@ -1,0 +1,42 @@
+# Mitschnitt dz1f-4b, FW 2.4.3 (anonymisiert). Format: <R|-> <topic> <payload>
+# R = retained. Alle 4 Ausgänge als Relais (nicht dimmbar) konfiguriert.
+# Retained nach dem Subscribe:
+R dingz/dingztest/announce {"model":"dz1f-4b","ip":"192.0.2.50","hw_version":"1.1.2","fw_version":"2.4.3"}
+R dingz/dingztest/online true
+R dingz/dingztest/dz1f-4b/energy/light/0 20479728.0
+R dingz/dingztest/dz1f-4b/energy/light/1 909357.0
+R dingz/dingztest/dz1f-4b/energy/light/2 18093369.0
+R dingz/dingztest/dz1f-4b/energy/light/3 14187115.0
+R dingz/dingztest/dz1f-4b/power/light/0 0.0
+R dingz/dingztest/dz1f-4b/power/light/1 0.0
+R dingz/dingztest/dz1f-4b/power/light/2 0.0
+R dingz/dingztest/dz1f-4b/power/light/3 0.0
+R dingz/dingztest/dz1f-4b/sensor/light 145
+R dingz/dingztest/dz1f-4b/sensor/temperature 21.0
+R dingz/dingztest/dz1f-4b/state/light/0 {"turn":"off","brightness":0,"exception":0}
+R dingz/dingztest/dz1f-4b/state/light/1 {"turn":"off","brightness":0,"exception":0}
+R dingz/dingztest/dz1f-4b/state/light/2 {"turn":"off","brightness":0,"exception":0}
+R dingz/dingztest/dz1f-4b/state/light/3 {"turn":"off","brightness":0,"exception":0}
+# Befehle (nicht dimmbarer Ausgang ignoriert brightness/fadetime):
+- dingz/dingztest/dz1f-4b/command/light/0 {"turn":"on","brightness":40,"fadetime":10}
+- dingz/dingztest/dz1f-4b/state/light/0 {"turn":"on","brightness":100,"exception":0}
+- dingz/dingztest/dz1f-4b/power/light/0 37.0
+- dingz/dingztest/dz1f-4b/command/light/0 {"turn":"toggle"}
+- dingz/dingztest/dz1f-4b/state/light/0 {"turn":"off","brightness":100,"exception":0}
+- dingz/dingztest/dz1f-4b/command/led {"on":1,"r":255,"g":0,"b":0}
+- dingz/dingztest/dz1f-4b/state/led {"on":1,"r":255,"g":0,"b":0}
+- dingz/dingztest/dz1f-4b/command/led {"on":0}
+- dingz/dingztest/dz1f-4b/state/led {"on":0,"r":255,"g":0,"b":0}
+# Taster (HTTP button/2 = MQTT button/1): press, hold (1 s), release
+- dingz/dingztest/dz1f-4b/event/button/1 p
+- dingz/dingztest/dz1f-4b/event/button/1 h
+- dingz/dingztest/dz1f-4b/event/button/1 h
+- dingz/dingztest/dz1f-4b/event/button/1 r
+# Periodischer Statusdump (ca. alle 90 s, nicht retained), Beispiel eines dz1f-pir:
+- dingz/dingztest2/dz1f-pir/state/light/0 {"turn":"off","brightness":0,"exception":0}
+- dingz/dingztest2/dz1f-pir/sensor/temperature 18.0
+- dingz/dingztest2/dz1f-pir/sensor/light 11
+- dingz/dingztest2/dz1f-pir/state/led {"on":0,"r":255,"g":255,"b":255}
+- dingz/dingztest2/dz1f-pir/power/light/0 0.0
+- dingz/dingztest2/dz1f-pir/energy/light/0 4481994.0
+- dingz/dingztest2/dz1f-pir/last_alive 1792052873

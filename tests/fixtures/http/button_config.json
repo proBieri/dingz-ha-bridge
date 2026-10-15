@@ -1,0 +1,457 @@
+{
+  "dingz_orientation": "1,2,3,4",
+  "buttons": [
+    {
+      "active": true,
+      "name": "Button 0",
+      "icon": 13,
+      "mode": {
+        "local": true,
+        "remote": false
+      },
+      "local_type": {
+        "light": true,
+        "motor": false
+      },
+      "type": {
+        "light": false,
+        "motor": false
+      },
+      "actions": {
+        "off": true,
+        "default_on": true,
+        "custom_on": false,
+        "open": false,
+        "close": true,
+        "default_pos": false,
+        "custom_pos": false
+      },
+      "ddi_actions": {
+        "brightness": true,
+        "colour_temperature": false
+      },
+      "outputs": {
+        "fade_in_time": 0,
+        "fade_out_time": 0,
+        "auto_off_delay": 0,
+        "local": [
+          {
+            "controlled": false,
+            "custom": {
+              "value": 100
+            }
+          },
+          {
+            "controlled": false,
+            "custom": {
+              "value": 100
+            }
+          },
+          {
+            "controlled": true,
+            "custom": {
+              "value": 100
+            }
+          },
+          {
+            "controlled": false,
+            "custom": {
+              "value": 100
+            }
+          }
+        ],
+        "remote": {
+          "groups": "",
+          "custom": {
+            "value": 100,
+            "ct_value": 100
+          }
+        },
+        "ddi": {
+          "controlled": {
+            "active": false,
+            "channel_id": 0
+          },
+          "custom": {
+            "brightness": 100,
+            "colour_temperature": 100
+          }
+        }
+      },
+      "motors": {
+        "invert": false,
+        "local": [
+          {
+            "controlled": true,
+            "custom": {
+              "blind": 100,
+              "lamella": 100
+            }
+          },
+          {
+            "controlled": false,
+            "custom": {
+              "blind": 100,
+              "lamella": 100
+            }
+          }
+        ],
+        "remote": {
+          "groups": "",
+          "custom": {
+            "blind": 100,
+            "lamella": 100
+          }
+        }
+      },
+      "feedback": {
+        "color": "green",
+        "brightness": 100
+      },
+      "carousel": false,
+      "button": {
+        "remote_push": false,
+        "therm_ctrl": false
+      }
+    },
+    {
+      "active": true,
+      "name": "Button 1",
+      "icon": 1,
+      "mode": {
+        "local": true,
+        "remote": false
+      },
+      "local_type": {
+        "light": true,
+        "motor": false
+      },
+      "type": {
+        "light": false,
+        "motor": false
+      },
+      "actions": {
+        "off": true,
+        "default_on": true,
+        "custom_on": false,
+        "open": true,
+        "close": false,
+        "default_pos": false,
+        "custom_pos": false
+      },
+      "ddi_actions": {
+        "brightness": true,
+        "colour_temperature": false
+      },
+      "outputs": {
+        "fade_in_time": 0,
+        "fade_out_time": 0,
+        "auto_off_delay": 0,
+        "local": [
+          {
+            "controlled": false,
+            "custom": {
+              "value": 100
+            }
+          },
+          {
+            "controlled": true,
+            "custom": {
+              "value": 100
+            }
+          },
+          {
+            "controlled": false,
+            "custom": {
+              "value": 100
+            }
+          },
+          {
+            "controlled": false,
+            "custom": {
+              "value": 100
+            }
+          }
+        ],
+        "remote": {
+          "groups": "",
+          "custom": {
+            "value": 100,
+            "ct_value": 100
+          }
+        },
+        "ddi": {
+          "controlled": {
+            "active": false,
+            "channel_id": 0
+          },
+          "custom": {
+            "brightness": 100,
+            "colour_temperature": 100
+          }
+        }
+      },
+      "motors": {
+        "invert": false,
+        "local": [
+          {
+            "controlled": true,
+            "custom": {
+              "blind": 100,
+              "lamella": 100
+            }
+          },
+          {
+            "controlled": false,
+            "custom": {
+              "blind": 100,
+              "lamella": 100
+            }
+          }
+        ],
+        "remote": {
+          "groups": "",
+          "custom": {
+            "blind": 100,
+            "lamella": 100
+          }
+        }
+      },
+      "feedback": {
+        "color": "green",
+        "brightness": 100
+      },
+      "carousel": false,
+      "button": {
+        "remote_push": false,
+        "therm_ctrl": false
+      }
+    },
+    {
+      "active": true,
+      "name": "Button 2",
+      "icon": 13,
+      "mode": {
+        "local": true,
+        "remote": false
+      },
+      "local_type": {
+        "light": true,
+        "motor": false
+      },
+      "type": {
+        "light": false,
+        "motor": false
+      },
+      "actions": {
+        "off": true,
+        "default_on": true,
+        "custom_on": false,
+        "open": false,
+        "close": false,
+        "default_pos": false,
+        "custom_pos": false
+      },
+      "ddi_actions": {
+        "brightness": false,
+        "colour_temperature": false
+      },
+      "outputs": {
+        "fade_in_time": 0,
+        "fade_out_time": 0,
+        "auto_off_delay": 0,
+        "local": [
+          {
+            "controlled": true,
+            "custom": {
+              "value": 100
+            }
+          },
+          {
+            "controlled": false,
+            "custom": {
+              "value": 100
+            }
+          },
+          {
+            "controlled": false,
+            "custom": {
+              "value": 100
+            }
+          },
+          {
+            "controlled": false,
+            "custom": {
+              "value": 100
+            }
+          }
+        ],
+        "remote": {
+          "groups": "",
+          "custom": {
+            "value": 100,
+            "ct_value": 100
+          }
+        },
+        "ddi": {
+          "controlled": {
+            "active": false,
+            "channel_id": 0
+          },
+          "custom": {
+            "brightness": 100,
+            "colour_temperature": 100
+          }
+        }
+      },
+      "motors": {
+        "invert": false,
+        "local": [
+          {
+            "controlled": false,
+            "custom": {
+              "blind": 100,
+              "lamella": 100
+            }
+          },
+          {
+            "controlled": false,
+            "custom": {
+              "blind": 100,
+              "lamella": 100
+            }
+          }
+        ],
+        "remote": {
+          "groups": "",
+          "custom": {
+            "blind": 100,
+            "lamella": 100
+          }
+        }
+      },
+      "feedback": {
+        "color": "green",
+        "brightness": 100
+      },
+      "carousel": false,
+      "button": {
+        "remote_push": false,
+        "therm_ctrl": false
+      }
+    },
+    {
+      "active": true,
+      "name": "Button 3",
+      "icon": 5,
+      "mode": {
+        "local": true,
+        "remote": false
+      },
+      "local_type": {
+        "light": true,
+        "motor": false
+      },
+      "type": {
+        "light": false,
+        "motor": false
+      },
+      "actions": {
+        "off": true,
+        "default_on": true,
+        "custom_on": false,
+        "open": false,
+        "close": false,
+        "default_pos": false,
+        "custom_pos": false
+      },
+      "ddi_actions": {
+        "brightness": false,
+        "colour_temperature": false
+      },
+      "outputs": {
+        "fade_in_time": 0,
+        "fade_out_time": 0,
+        "auto_off_delay": 0,
+        "local": [
+          {
+            "controlled": false,
+            "custom": {
+              "value": 100
+            }
+          },
+          {
+            "controlled": false,
+            "custom": {
+              "value": 100
+            }
+          },
+          {
+            "controlled": false,
+            "custom": {
+              "value": 100
+            }
+          },
+          {
+            "controlled": true,
+            "custom": {
+              "value": 100
+            }
+          }
+        ],
+        "remote": {
+          "groups": "",
+          "custom": {
+            "value": 100,
+            "ct_value": 100
+          }
+        },
+        "ddi": {
+          "controlled": {
+            "active": false,
+            "channel_id": 0
+          },
+          "custom": {
+            "brightness": 100,
+            "colour_temperature": 100
+          }
+        }
+      },
+      "motors": {
+        "invert": false,
+        "local": [
+          {
+            "controlled": false,
+            "custom": {
+              "blind": 100,
+              "lamella": 100
+            }
+          },
+          {
+            "controlled": false,
+            "custom": {
+              "blind": 100,
+              "lamella": 100
+            }
+          }
+        ],
+        "remote": {
+          "groups": "",
+          "custom": {
+            "blind": 100,
+            "lamella": 100
+          }
+        }
+      },
+      "feedback": {
+        "color": "green",
+        "brightness": 100
+      },
+      "carousel": false,
+      "button": {
+        "remote_push": false,
+        "therm_ctrl": false
+      }
+    }
+  ]
+}

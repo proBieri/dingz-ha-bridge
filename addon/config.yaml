@@ -1,0 +1,43 @@
+name: dingz HA Bridge
+version: "0.1.0"
+slug: dingz_ha_bridge
+description: dingz switches (iolo) in Home Assistant via MQTT discovery
+url: https://github.com/proBieri/dingz-ha-bridge
+# Prebuilt by .github/workflows/ci.yml from the Dockerfile in the repository root.
+image: ghcr.io/probieri/dingz-ha-bridge-{arch}
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+init: true
+# mDNS (device scan) needs the host network. The web UI port is only answered for
+# requests coming through ingress.
+host_network: true
+services:
+  - mqtt:need
+# Read-only access to /ssl for a custom broker CA (option mqtt_ca_file).
+map:
+  - ssl
+ingress: true
+ingress_port: 8099
+panel_icon: mdi:light-switch
+panel_title: dingz
+options:
+  id_prefix: dingz
+  name_prefix: ""
+  http_enrichment: true
+  log_level: info
+  update_check: true
+  temperature_filter: true
+  mqtt_ca_file: ""
+  mqtt_tls_insecure: false
+schema:
+  id_prefix: match(^[a-zA-Z0-9][a-zA-Z0-9_-]*$)
+  name_prefix: str?
+  http_enrichment: bool
+  log_level: list(debug|info|warning|error)
+  update_check: bool
+  temperature_filter: bool
+  mqtt_ca_file: str?
+  mqtt_tls_insecure: bool

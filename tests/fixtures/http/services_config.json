@@ -1,0 +1,25 @@
+{
+  "mystrom": false,
+  "homekit": false,
+  "rest_api": true,
+  "panel": true,
+  "aws": true,
+  "discovery": false,
+  "udp_search": true,
+  "aws_notifies": false,
+  "ssdp": false,
+  "mdns": true,
+  "mdns_search": true,
+  "homekit_configured": false,
+  "cloud_ping": false,
+  "broadcast_period": 5,
+  "mdns_search_period": 60,
+  "mqtt": {
+    "uri": "mqtt://192.0.2.10",
+    "enable": true,
+    "server.crt": null
+  },
+  "cloud_paired": true,
+  "cloud_home_id": "0",
+  "cloud_test_enabled": false
+}

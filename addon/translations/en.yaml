@@ -1,0 +1,24 @@
+configuration:
+  id_prefix:
+    name: ID prefix
+    description: Prefix of unique_ids and discovery topics. A different prefix (e.g. dingztest) creates a separate set of devices.
+  name_prefix:
+    name: Name prefix
+    description: Prepended to every device name, e.g. "TEST ".
+  http_enrichment:
+    name: Read HTTP details
+    description: Read device names, output names and output types from the dingz HTTP API.
+  log_level:
+    name: Log level
+  update_check:
+    name: Update check
+    description: Show in the web UI whether a newer version is available on GitHub.
+  temperature_filter:
+    name: Temperature filter
+    description: Drop the floored whole-degree values of the dingz periodic status dump (avoids a saw-tooth). The temperature sensor then needs the running bridge.
+  mqtt_ca_file:
+    name: Broker CA file
+    description: "Only for TLS with an own CA: path to the CA file (PEM), e.g. /ssl/mqtt-ca.pem."
+  mqtt_tls_insecure:
+    name: Do not verify TLS certificate
+    description: "Testing only: do not verify the broker certificate with TLS."

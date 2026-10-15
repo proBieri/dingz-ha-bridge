@@ -1,0 +1,38 @@
+[
+  {
+    "ph_out_id": 0,
+    "enable": true,
+    "on": false,
+    "overload": false,
+    "value": 100,
+    "ramp": 0,
+    "type": "light"
+  },
+  {
+    "ph_out_id": 1,
+    "enable": true,
+    "on": false,
+    "overload": false,
+    "value": 100,
+    "ramp": 0,
+    "type": "light"
+  },
+  {
+    "ph_out_id": 2,
+    "enable": true,
+    "on": false,
+    "overload": false,
+    "value": 100,
+    "ramp": 0,
+    "type": "light"
+  },
+  {
+    "ph_out_id": 3,
+    "enable": true,
+    "on": false,
+    "overload": false,
+    "value": 100,
+    "ramp": 0,
+    "type": "light"
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "brightness": 151,
+  "light_state": "twilight",
+  "light_state_lpf": "twilight",
+  "room_temperature": 21,
+  "uncompensated_temperature": 33.1875,
+  "temp_offset": 6,
+  "cpu_temperature": 47.22,
+  "puck_temperature": 35,
+  "fet_temperature": 35.1,
+  "input_state": null,
+  "pirs": [
+    null,
+    {
+      "enabled": false,
+      "motion": false,
+      "mode": "idle",
+      "light_off_timer": 0,
+      "suspend_timer": 0
+    },
+    {
+      "enabled": false,
+      "motion": false,
+      "mode": "idle",
+      "light_off_timer": 0,
+      "suspend_timer": 0
+    }
+  ],
+  "power_outputs": [
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

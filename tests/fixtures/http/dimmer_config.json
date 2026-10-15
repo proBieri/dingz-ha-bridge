@@ -1,0 +1,304 @@
+{
+  "dimmers": [
+    {
+      "active": true,
+      "name": "Dimmer 0",
+      "type": "light",
+      "groups": "",
+      "feedback": {
+        "color": "blue",
+        "brightness": 100
+      },
+      "light": {
+        "dimmable": false,
+        "auto_off_delay": 0,
+        "dimmer": {
+          "type": "linear",
+          "use_last_value": false,
+          "range": {
+            "min": 1,
+            "max": 100
+          },
+          "dynamic": {
+            "day": 100,
+            "twilight": 100,
+            "night": 100
+          }
+        },
+        "onoff": {
+          "group_on": {
+            "day": false,
+            "twilight": true,
+            "night": true
+          }
+        }
+      },
+      "heater": {
+        "type": "nc",
+        "function": "heating"
+      },
+      "pulse": {
+        "type": "positive",
+        "length": {
+          "min": 0.2,
+          "max": 0
+        }
+      },
+      "fan": {
+        "delay": {
+          "pre": 180,
+          "post": 5
+        },
+        "ventilation": {
+          "from": {
+            "hour": 7,
+            "minute": 0
+          },
+          "to": {
+            "hour": 21,
+            "minute": 0
+          },
+          "force_in_24": 0
+        },
+        "react": {
+          "pir_during_slot": false,
+          "btn_no_delay": false
+        },
+        "active": true
+      },
+      "garage_door": {
+        "opening_travel_time": 12,
+        "close_timeout": 60,
+        "pulse_time": 1
+      },
+      "valve": {
+        "duration": 60
+      }
+    },
+    {
+      "active": true,
+      "name": "Dimmer 1",
+      "type": "light",
+      "groups": "",
+      "feedback": {
+        "color": "blue",
+        "brightness": 100
+      },
+      "light": {
+        "dimmable": false,
+        "auto_off_delay": 0,
+        "dimmer": {
+          "type": "linear",
+          "use_last_value": false,
+          "range": {
+            "min": 1,
+            "max": 100
+          },
+          "dynamic": {
+            "day": 100,
+            "twilight": 100,
+            "night": 100
+          }
+        },
+        "onoff": {
+          "group_on": {
+            "day": false,
+            "twilight": true,
+            "night": true
+          }
+        }
+      },
+      "heater": {
+        "type": "nc",
+        "function": "heating"
+      },
+      "pulse": {
+        "type": "positive",
+        "length": {
+          "min": 0.2,
+          "max": 0
+        }
+      },
+      "fan": {
+        "delay": {
+          "pre": 180,
+          "post": 5
+        },
+        "ventilation": {
+          "from": {
+            "hour": 7,
+            "minute": 0
+          },
+          "to": {
+            "hour": 21,
+            "minute": 0
+          },
+          "force_in_24": 0
+        },
+        "react": {
+          "pir_during_slot": false,
+          "btn_no_delay": false
+        },
+        "active": true
+      },
+      "garage_door": {
+        "opening_travel_time": 12,
+        "close_timeout": 60,
+        "pulse_time": 1
+      },
+      "valve": {
+        "duration": 60
+      }
+    },
+    {
+      "active": true,
+      "name": "Dimmer 2",
+      "type": "light",
+      "groups": "",
+      "feedback": {
+        "color": "blue",
+        "brightness": 100
+      },
+      "light": {
+        "dimmable": false,
+        "auto_off_delay": 0,
+        "dimmer": {
+          "type": "linear",
+          "use_last_value": false,
+          "range": {
+            "min": 1,
+            "max": 100
+          },
+          "dynamic": {
+            "day": 100,
+            "twilight": 100,
+            "night": 100
+          }
+        },
+        "onoff": {
+          "group_on": {
+            "day": false,
+            "twilight": true,
+            "night": true
+          }
+        }
+      },
+      "heater": {
+        "type": "nc",
+        "function": "heating"
+      },
+      "pulse": {
+        "type": "positive",
+        "length": {
+          "min": 0.2,
+          "max": 0
+        }
+      },
+      "fan": {
+        "delay": {
+          "pre": 180,
+          "post": 5
+        },
+        "ventilation": {
+          "from": {
+            "hour": 7,
+            "minute": 0
+          },
+          "to": {
+            "hour": 21,
+            "minute": 0
+          },
+          "force_in_24": 0
+        },
+        "react": {
+          "pir_during_slot": false,
+          "btn_no_delay": false
+        },
+        "active": true
+      },
+      "garage_door": {
+        "opening_travel_time": 12,
+        "close_timeout": 60,
+        "pulse_time": 1
+      },
+      "valve": {
+        "duration": 60
+      }
+    },
+    {
+      "active": true,
+      "name": "Dimmer 3",
+      "type": "light",
+      "groups": "",
+      "feedback": {
+        "color": "blue",
+        "brightness": 100
+      },
+      "light": {
+        "dimmable": false,
+        "auto_off_delay": 0,
+        "dimmer": {
+          "type": "linear",
+          "use_last_value": false,
+          "range": {
+            "min": 1,
+            "max": 100
+          },
+          "dynamic": {
+            "day": 100,
+            "twilight": 100,
+            "night": 100
+          }
+        },
+        "onoff": {
+          "group_on": {
+            "day": false,
+            "twilight": true,
+            "night": true
+          }
+        }
+      },
+      "heater": {
+        "type": "nc",
+        "function": "heating"
+      },
+      "pulse": {
+        "type": "positive",
+        "length": {
+          "min": 0.2,
+          "max": 0
+        }
+      },
+      "fan": {
+        "delay": {
+          "pre": 180,
+          "post": 5
+        },
+        "ventilation": {
+          "from": {
+            "hour": 7,
+            "minute": 0
+          },
+          "to": {
+            "hour": 21,
+            "minute": 0
+          },
+          "force_in_24": 0
+        },
+        "react": {
+          "pir_during_slot": false,
+          "btn_no_delay": false
+        },
+        "active": true
+      },
+      "garage_door": {
+        "opening_travel_time": 12,
+        "close_timeout": 60,
+        "pulse_time": 1
+      },
+      "valve": {
+        "duration": 60
+      }
+    }
+  ]
+}

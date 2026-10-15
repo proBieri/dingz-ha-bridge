@@ -1,0 +1,40 @@
+{
+  "blinds": [
+    {
+      "active": false,
+      "name": "",
+      "type": "blind",
+      "min_value": 0,
+      "max_value": 100,
+      "def_blind": 0,
+      "def_lamella": 80,
+      "groups": "z",
+      "auto_calibration": true,
+      "shade_up_time": 180,
+      "shade_down_time": 180,
+      "invert_direction": false,
+      "lamella_time": 1.8,
+      "step_duration": 300,
+      "step_interval": 1200,
+      "state": "Not initialised"
+    },
+    {
+      "active": false,
+      "name": "",
+      "type": "blind",
+      "min_value": 0,
+      "max_value": 100,
+      "def_blind": 0,
+      "def_lamella": 80,
+      "groups": "z",
+      "auto_calibration": true,
+      "shade_up_time": 180,
+      "shade_down_time": 180,
+      "invert_direction": false,
+      "lamella_time": 1.8,
+      "step_duration": 300,
+      "step_interval": 1200,
+      "state": "Not initialised"
+    }
+  ]
+}

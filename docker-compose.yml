@@ -1,0 +1,19 @@
+# Standalone operation with the prebuilt image from GitHub (amd64 and arm64).
+#   curl -LO https://raw.githubusercontent.com/proBieri/dingz-ha-bridge/main/docker-compose.yml
+#   curl -L -o .env https://raw.githubusercontent.com/proBieri/dingz-ha-bridge/main/.env.example
+#   (edit .env)
+#   docker compose up -d
+services:
+  dingz-ha-bridge:
+    image: ghcr.io/probieri/dingz-ha-bridge:latest
+    # To build from source instead (inside a clone of the repository):
+    # build: .
+    container_name: dingz-ha-bridge
+    restart: unless-stopped
+    # Host networking is required for mDNS discovery (scan / web UI).
+    network_mode: host
+    env_file: .env
+    # With TLS and an own CA: mount the certificate and set DINGZ_MQTT_CA_FILE=/certs/mqtt-ca.pem
+    # volumes:
+    #   - ./certs:/certs:ro
+    command: ["run"]

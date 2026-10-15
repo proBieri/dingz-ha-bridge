@@ -1,0 +1,113 @@
+:root {
+  --bg: #f7f7f8;
+  --fg: #1d1d1f;
+  --muted: #6b6b70;
+  --card: #ffffff;
+  --line: #dedee3;
+  --accent: #0b6bcb;
+  --ok: #1a7f37;
+  --bad: #c62828;
+  --warn: #b26a00;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161618;
+    --fg: #ececf0;
+    --muted: #9a9aa2;
+    --card: #1f1f22;
+    --line: #34343a;
+    --accent: #5aa9ff;
+    --ok: #4cc26b;
+    --bad: #ff6b6b;
+    --warn: #f0b429;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+header, main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; }
+.header-links { margin-left: auto; display: flex; gap: 12px; align-items: baseline; font-size: 13px; }
+a.update { font-weight: 600; color: var(--warn); }
+h1 { font-size: 20px; margin: 0; }
+h2 { font-size: 17px; margin: 0 0 8px; }
+h3 { font-size: 15px; margin: 20px 0 4px; }
+
+.muted { color: var(--muted); }
+a { color: var(--accent); }
+#detail-link { margin: 0 0 12px; }
+.error { color: var(--bad); }
+.ok { color: var(--ok); }
+.bad { color: var(--bad); }
+.warn { color: var(--warn); }
+
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+.toolbar input { flex: 1 1 220px; }
+
+button, input {
+  font: inherit;
+  color: inherit;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+button { cursor: pointer; background: var(--accent); border-color: var(--accent); color: #fff; }
+button:disabled { opacity: 0.6; cursor: default; }
+
+.table-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-weight: 600; color: var(--muted); }
+tbody tr { cursor: pointer; }
+tbody tr:hover, tbody tr.selected { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+tbody tr:last-child td { border-bottom: none; }
+
+#detail { margin-top: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
+dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; margin: 0; }
+dt { color: var(--muted); }
+dd { margin: 0; overflow-wrap: anywhere; }
+
+form { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; align-items: end; }
+label { display: grid; gap: 2px; color: var(--muted); }
+/* Same height for every control so the checkbox lines up with the inputs. */
+form input:not([type="checkbox"]), form button { height: 34px; }
+form input:not([type="checkbox"]) { width: 100%; min-width: 0; }
+label.inline { display: flex; align-items: center; gap: 8px; height: 34px; color: var(--fg); cursor: pointer; }
+input[type="checkbox"] { width: 16px; height: 16px; margin: 0; padding: 0; accent-color: var(--accent); }
+
+/* MQTT activity: grey until a message was seen, flashes on every new message. */
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--line);
+  vertical-align: middle;
+}
+.dot.seen { background: color-mix(in srgb, var(--ok) 45%, var(--line)); }
+.dot.flash { animation: mqtt-flash 1.2s ease-out; }
+@keyframes mqtt-flash {
+  0% { background: var(--ok); box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 70%, transparent); transform: scale(1.5); }
+  100% { box-shadow: 0 0 0 8px transparent; transform: scale(1); }
+}
+.since { font-size: 12px; }
+
+button.link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
