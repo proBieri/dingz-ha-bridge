@@ -12,7 +12,7 @@
       <stop offset="0" stop-color="#3ad7ff"/>
       <stop offset="1" stop-color="#5a9bff"/>
     </linearGradient>
-    <radialGradient id="lens" cx="0.5" cy="0.42" r="0.6">
+    <radialGradient id="lens" cx="0.42" cy="0.42" r="0.62">
       <stop offset="0" stop-color="#f2f6fb"/>
       <stop offset="0.6" stop-color="#cdd8e6"/>
       <stop offset="1" stop-color="#aab8cc"/>
@@ -23,23 +23,31 @@
     </filter>
   </defs>
 
-  <!-- rounded tile (dingz form factor) -->
-  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
-  <!-- soft top highlight -->
-  <rect width="512" height="248" rx="116" fill="#ffffff" opacity="0.07"/>
+  <g id="mark">
+    <!-- rounded tile (dingz form factor) -->
+    <rect width="512" height="512" rx="116" fill="url(#bg)"/>
+    <rect width="512" height="248" rx="116" fill="#ffffff" opacity="0.07"/>
 
-  <!-- switch plate -->
-  <rect x="132" y="84" width="248" height="344" rx="46" fill="url(#plate)"/>
-  <!-- faint rocker seam (two halves) -->
-  <rect x="160" y="251" width="192" height="5" rx="2.5" fill="#c9d4e2"/>
+    <!-- switch plate -->
+    <rect x="132" y="84" width="248" height="344" rx="46" fill="url(#plate)"/>
 
-  <!-- sensor lens near the top -->
-  <circle cx="256" cy="162" r="30" fill="url(#lens)"/>
-  <circle cx="256" cy="162" r="13" fill="#8ea0b8"/>
-  <circle cx="249" cy="155" r="5" fill="#ffffff" opacity="0.85"/>
+    <!-- 4 buttons in the corners -->
+    <g fill="#e9eff7" stroke="#c7d3e2" stroke-width="2.5">
+      <rect x="154" y="110" width="70" height="70" rx="16"/>
+      <rect x="288" y="110" width="70" height="70" rx="16"/>
+      <rect x="154" y="332" width="70" height="70" rx="16"/>
+      <rect x="288" y="332" width="70" height="70" rx="16"/>
+    </g>
 
-  <!-- glowing front LED at the bottom -->
-  <g filter="url(#glow)">
-    <rect x="176" y="372" width="160" height="18" rx="9" fill="url(#led)"/>
+    <!-- PIR sensor in the centre -->
+    <circle cx="256" cy="256" r="30" fill="url(#lens)"/>
+    <circle cx="256" cy="256" r="13" fill="#8ea0b8"/>
+    <circle cx="249" cy="249" r="5" fill="#ffffff" opacity="0.85"/>
+
+    <!-- glowing LED bar in the middle, left and right of the PIR -->
+    <g filter="url(#glow)">
+      <rect x="166" y="248" width="50" height="16" rx="8" fill="url(#led)"/>
+      <rect x="296" y="248" width="50" height="16" rx="8" fill="url(#led)"/>
+    </g>
   </g>
 </svg>
