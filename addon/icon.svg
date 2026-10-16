@@ -31,12 +31,12 @@
     <!-- switch plate -->
     <rect x="132" y="84" width="248" height="344" rx="46" fill="url(#plate)"/>
 
-    <!-- 4 buttons in the corners -->
+    <!-- 4 large buttons (2x2), like the real dingz front -->
     <g fill="#e9eff7" stroke="#c7d3e2" stroke-width="2.5">
-      <rect x="154" y="110" width="70" height="70" rx="16"/>
-      <rect x="288" y="110" width="70" height="70" rx="16"/>
-      <rect x="154" y="332" width="70" height="70" rx="16"/>
-      <rect x="288" y="332" width="70" height="70" rx="16"/>
+      <rect x="150" y="102" width="96" height="112" rx="22"/>
+      <rect x="266" y="102" width="96" height="112" rx="22"/>
+      <rect x="150" y="298" width="96" height="112" rx="22"/>
+      <rect x="266" y="298" width="96" height="112" rx="22"/>
     </g>
 
     <!-- PIR sensor in the centre -->
