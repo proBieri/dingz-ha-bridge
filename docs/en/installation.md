@@ -113,6 +113,17 @@ If another integration for the dingz is already running, entities appear twice. 
 2. When everything works: remove the test devices (see [Troubleshooting](troubleshooting.md#removing-devices)), reset the prefix to the default `dingz`, restart the bridge.
 3. Switch automations to the new entities, remove the old integration.
 
+**What hass-dingz offers that the bridge does not** (by design — the bridge is a pure MQTT-discovery layer):
+
+| hass-dingz | bridge |
+|---|---|
+| Reboot button, PIR timer reset | not exposed |
+| Temperature offset as a setting | not exposed |
+| CPU / FET temperature sensors | not exposed (only on the HTTP `/sensors` endpoint, not on MQTT) |
+| MQTT settings as entities | not exposed; set the broker from the bridge's panel instead |
+
+Check whether you rely on any of these regularly before removing hass-dingz. Several could be added later (e.g. CPU/FET temperature as diagnostic sensors via periodic HTTP polling, or a reboot button) — open an issue if you need one.
+
 ## Updating
 
 - **Add-on**: updates appear in the add-on store.

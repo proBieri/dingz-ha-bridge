@@ -113,6 +113,17 @@ Läuft parallel bereits eine Integration für die dingz, entstehen doppelte Enti
 2. Wenn alles passt: Testgeräte entfernen (siehe [Fehlersuche](troubleshooting.md#geräte-wieder-entfernen)), Präfix auf den Standard `dingz` zurücksetzen, Bridge neu starten.
 3. Automationen auf die neuen Entities umstellen, alte Integration entfernen.
 
+**Was hass-dingz bietet und die Bridge nicht** (bewusst — die Bridge ist eine reine MQTT-Discovery-Schicht):
+
+| hass-dingz | Bridge |
+|---|---|
+| Neustart-Button, PIR-Zeit zurücksetzen | nicht vorhanden |
+| Temperatur-Offset als Einstellung | nicht vorhanden |
+| CPU-/FET-Temperatur-Sensoren | nicht vorhanden (nur über HTTP `/sensors`, nicht über MQTT) |
+| MQTT-Einstellungen als Entities | nicht vorhanden; Broker stattdessen im Bridge-Panel setzen |
+
+Prüfe vor dem Entfernen von hass-dingz, ob du davon etwas regelmässig brauchst. Mehreres liesse sich später ergänzen (z. B. CPU-/FET-Temperatur als Diagnose-Sensoren per regelmässigem HTTP-Abruf oder ein Neustart-Button) — bei Bedarf ein Issue eröffnen.
+
 ## Aktualisieren
 
 - **Add-on**: Updates erscheinen im Add-on Store.
