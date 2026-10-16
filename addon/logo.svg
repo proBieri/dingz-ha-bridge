@@ -28,11 +28,10 @@
     <rect width="512" height="512" rx="116" fill="url(#bg)"/>
     <rect width="512" height="248" rx="116" fill="#ffffff" opacity="0.07"/>
     <rect x="132" y="84" width="248" height="344" rx="46" fill="url(#plate)"/>
-    <g fill="#e9eff7" stroke="#c7d3e2" stroke-width="2.5">
-      <rect x="150" y="102" width="96" height="112" rx="22"/>
-      <rect x="266" y="102" width="96" height="112" rx="22"/>
-      <rect x="150" y="298" width="96" height="112" rx="22"/>
-      <rect x="266" y="298" width="96" height="112" rx="22"/>
+    <rect x="150" y="102" width="212" height="308" rx="30" fill="#e9eff7" stroke="#c7d3e2" stroke-width="2.5"/>
+    <g fill="#c7d3e2">
+      <rect x="254.5" y="116" width="3" height="280"/>
+      <rect x="164" y="254.5" width="184" height="3"/>
     </g>
     <circle cx="256" cy="256" r="30" fill="url(#lens)"/>
     <circle cx="256" cy="256" r="13" fill="#8ea0b8"/>
