@@ -133,7 +133,16 @@ function ago(seconds) {
 function createRow(d) {
   const tr = document.createElement("tr");
   const names = ["name", "ip", "model", "fw", "mqttId", "mqtt", "wifi", "ha", "sources"];
-  const cells = Object.fromEntries(names.map((n) => [n, document.createElement("td")]));
+  // data-label drives the column name shown next to each value in the mobile card layout.
+  const labels = {
+    name: t("colName"), ip: "IP", model: t("colModel"), fw: "FW", mqttId: t("colMqttId"),
+    mqtt: "MQTT", wifi: t("colWifi"), ha: t("colHa"), sources: t("colSources"),
+  };
+  const cells = Object.fromEntries(names.map((n) => {
+    const td = document.createElement("td");
+    td.dataset.label = labels[n];
+    return [n, td];
+  }));
   cells.ip.append(deviceLink(d.host, d.host));
 
   // MQTT cell: activity dot + state + time since the last message.

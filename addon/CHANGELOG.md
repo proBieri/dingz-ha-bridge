@@ -2,6 +2,7 @@
 
 ## 0.1.3
 
+- Web UI: responsive layout for phones. The device table now stacks into one card per device on narrow screens instead of scrolling sideways; the detail list and the broker form stack into a single column.
 - Web UI: removed the "← Add-ons" link. Home Assistant runs ingress add-ons in a sandboxed iframe that may not navigate the surrounding frame, so the link 404'd on desktop and hung in the mobile app. Use the HA header and sidebar (enable **Show in sidebar** for the **Dingz** panel) instead.
 
 ## 0.1.2

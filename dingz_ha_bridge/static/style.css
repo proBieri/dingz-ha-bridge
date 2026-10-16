@@ -111,3 +111,47 @@ button.link {
   text-decoration: underline;
   cursor: pointer;
 }
+
+/* Narrow screens: the device table does not fit side by side, so each row becomes a
+   stacked card (label from the column header via data-label) instead of scrolling wide. */
+@media (max-width: 640px) {
+  header, main { padding: 12px; }
+  .header-links { margin-left: 0; }
+
+  .table-wrap { overflow-x: visible; border: none; background: none; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  thead { display: none; }
+  tbody tr {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 2px 0;
+  }
+  td {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: right;
+    padding: 7px 12px;
+  }
+  /* Inner separators inside every card (override the desktop "last row has no border"
+     rule), but no line under the card's final cell. */
+  tbody tr:last-child td { border-bottom: 1px solid var(--line); }
+  td:last-child,
+  tbody tr:last-child td:last-child { border-bottom: none; }
+  td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-weight: 600;
+    text-align: left;
+    flex: 0 0 auto;
+  }
+
+  dl { grid-template-columns: 1fr; gap: 0 0; }
+  dt { margin-top: 8px; }
+  dd { margin-bottom: 4px; }
+  form { grid-template-columns: 1fr; }
+}
