@@ -110,6 +110,7 @@ async def fake_wifi(self):
 
 async def fake_check():
     from dingz_ha_bridge import __version__ as v
+
     return updates.UpdateInfo(current=v, latest=v, checked_at=time.time())
 
 
