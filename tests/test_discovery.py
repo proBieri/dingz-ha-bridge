@@ -104,7 +104,10 @@ def test_device_config_shape(device: d.DeviceState) -> None:
     }
     assert config["availability"][0]["topic"] == f"dingz/{DEV}/online"
     assert d.discovery_topic(DEV) == "homeassistant/device/dingz_dingztest/config"
-    assert sorted(config["components"]) == sorted(
+    comps = config["components"]
+    triggers = {k: c for k, c in comps.items() if c["platform"] == "device_automation"}
+    entities = {k: c for k, c in comps.items() if c["platform"] != "device_automation"}
+    assert sorted(entities) == sorted(
         [
             "dingz_dingztest_light_0",
             "dingz_dingztest_light_1",
@@ -123,7 +126,14 @@ def test_device_config_shape(device: d.DeviceState) -> None:
             "dingz_dingztest_light_energy_0",
         ]
     )
-    for uid, cfg in config["components"].items():
+    # Device triggers: 5 buttons (0-4), 7 actions each, no unique_id, one payload each.
+    assert len(triggers) == 5 * len(d.BUTTON_TRIGGERS)
+    for cfg in triggers.values():
+        assert "unique_id" not in cfg
+        assert cfg["automation_type"] == "trigger"
+        assert cfg["payload"] in d.BUTTON_TRIGGERS
+        assert parse_topic(cfg["topic"]) is not None, cfg["topic"]
+    for uid, cfg in entities.items():
         assert cfg["unique_id"] == uid
         for key in ("state_topic", "command_topic"):
             if key in cfg:
@@ -290,6 +300,26 @@ def test_button_and_pir_templates(device: d.DeviceState) -> None:
         "ON",
         "OFF",
     ]
+
+
+def test_button_device_triggers(device: d.DeviceState) -> None:
+    components = d.build_device_config(device)["components"]
+    # A single click (m1) on button 1 (index 0) is a short-press trigger on its topic.
+    short = components["trigger_button_0_button_short_press"]
+    assert short == {
+        "platform": "device_automation",
+        "automation_type": "trigger",
+        "type": "button_short_press",
+        "subtype": "button_1",
+        "topic": "dingz/dingztest/dz1f-pir/event/button/0",
+        "payload": "m1",
+    }
+    # Double click maps to m2, hold to the repeating "h", release to "r".
+    assert components["trigger_button_0_button_double_press"]["payload"] == "m2"
+    assert components["trigger_button_0_button_long_press"]["payload"] == "h"
+    assert components["trigger_button_0_button_long_release"]["payload"] == "r"
+    # The external button (index 4) gets its own subtype.
+    assert components["trigger_button_4_button_short_press"]["subtype"] == "button_5"
 
 
 def test_energy_is_converted_from_joule_to_kwh(device: d.DeviceState) -> None:

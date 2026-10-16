@@ -194,7 +194,10 @@ def test_id_and_name_prefix_are_separate_namespace() -> None:
     config = json.loads(payload)
     assert config["device"]["name"].startswith("TEST ")
     assert config["device"]["identifiers"] == ["dingztest_dingztest"]
-    assert all(uid.startswith("dingztest_dingztest_") for uid in config["components"])
+    # Entity components carry the prefixed namespace; device triggers (no unique_id) do not.
+    entity_ids = [u for u, c in config["components"].items() if "unique_id" in c]
+    assert entity_ids
+    assert all(uid.startswith("dingztest_dingztest_") for uid in entity_ids)
     reg.published[topic] = payload
     assert reg.stale_topics() == []
 

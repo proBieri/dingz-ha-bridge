@@ -32,9 +32,14 @@ Alle Entities sind **nicht verfügbar**, wenn der dingz offline ist (`dingz/<id>
 | `p` | gedrückt (press) |
 | `h` | gehalten (hold), wiederholt sich jede Sekunde |
 | `r` | losgelassen nach Halten (release) |
-| `m1` … `m5` | Mehrfachklick (`m2` = Doppelklick) |
+| `m1`, `m2`, … | Mehrfachklick (`m1` = Einzelklick, `m2` = Doppelklick, …), offen |
 
-In Automationen: Auslöser *Entität → Zustand* des Event-Entitys, Bedingung auf das Attribut `event_type`.
+Verifiziert auf FW 2.4.3: Jede Geste beginnt mit `p`, danach folgt nach dem Klick-Fenster der Mehrfachklick-Zähler `m<n>` (der Zähler ist offen — `m1`–`m6` gesehen); beim Halten kommt `h` (wiederholt) und beim Loslassen `r`.
+
+Zwei Wege, Taster in Automationen zu nutzen:
+
+- **Device-Trigger** (empfohlen): Jeder Taster bietet fertige Trigger — *kurzer Druck* (`m1`), *Doppel-/Dreifach-/Vierfach-/Fünffachklick* (`m2`–`m5`), *langer Druck* (`h`) und *Loslassen nach Halten* (`r`). (Das Gerät zählt weiter, aber Home Assistant kennt keinen Standard-Trigger über fünf Klicks hinaus, darum werden sechs oder mehr Klicks nicht als Trigger angeboten.) Du wählst sie direkt beim Anlegen eines Auslösers (Gerät → Auslöser). *Langer Druck* feuert wiederholt (~1 Hz), solange gehalten wird. (`p` ist bewusst kein Trigger: Es feuert am Anfang jeder Geste und würde mit dem Einzelklick kollidieren.)
+- **Event-Entität**: Auslöser *Entität → Zustand* des Event-Entitys, Bedingung auf das Attribut `event_type` (`p`, `h`, `r`, `m1` … `m5`). Die Entität zeigt zudem die letzte Aktion im Dashboard.
 
 ### Bewegungsmelder
 

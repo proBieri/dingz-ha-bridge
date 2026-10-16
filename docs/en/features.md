@@ -32,9 +32,14 @@ All entities become **unavailable** when the dingz is offline (`dingz/<id>/onlin
 | `p` | pressed |
 | `h` | held, repeated every second |
 | `r` | released after hold |
-| `m1` … `m5` | multi-click (`m2` = double click) |
+| `m1`, `m2`, … | multi-click (`m1` = single click, `m2` = double click, …), open-ended |
 
-In automations: trigger *Entity → State* on the event entity, condition on the attribute `event_type`.
+Verified on FW 2.4.3: every gesture starts with `p`, then the multi-click count `m<n>` arrives after the click window (the counter is open-ended — `m1`–`m6` seen); a hold sends `h` (repeated) and `r` on release.
+
+Two ways to use buttons in automations:
+
+- **Device triggers** (recommended): each button exposes ready-made triggers — *short press* (`m1`), *double/triple/quadruple/quintuple press* (`m2`–`m5`), *long press* (`h`) and *long release* (`r`). (The device counts further, but Home Assistant has no standard trigger beyond quintuple, so six or more clicks are not offered as a trigger.) Pick them directly when adding a trigger to an automation (device → trigger). *Long press* fires repeatedly (~1 Hz) while the button is held. (`p` is deliberately not a trigger: it fires at the start of every gesture and would collide with the single click.)
+- **Event entity**: trigger *Entity → State* on the button's `event` entity and add a condition on the attribute `event_type` (`p`, `h`, `r`, `m1` … `m5`). The entity also shows the last action on a dashboard.
 
 ### Motion sensor
 

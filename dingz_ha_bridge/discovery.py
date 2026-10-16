@@ -29,6 +29,21 @@ MANUFACTURER = "iolo AG"
 FOUR_BUTTON_MODEL_PREFIX = "dz1f-"
 BUTTON_COUNT = 4
 BUTTON_EVENT_TYPES = ["p", "h", "r", "m1", "m2", "m3", "m4", "m5"]
+# Button payloads → HA device-trigger types. Verified on FW 2.4.3 (dz1f-pir): every gesture
+# starts with "p", then the multi-click count "m<n>" arrives after the click window; a hold
+# sends "h" (repeated ~1 Hz) and "r" on release. "p" is intentionally not a trigger: it fires
+# on every gesture start (also before m*/h), so it would collide with the single click (m1).
+# The device's click counter is open-ended (m6 and beyond observed), but HA has no standard
+# trigger type past "quintuple" (5), so triggers stop at m5; higher counts are not exposed.
+BUTTON_TRIGGERS: dict[str, str] = {
+    "m1": "button_short_press",
+    "m2": "button_double_press",
+    "m3": "button_triple_press",
+    "m4": "button_quadruple_press",
+    "m5": "button_quintuple_press",
+    "h": "button_long_press",
+    "r": "button_long_release",
+}
 # The PIR repeats "ss" every 3 s while somebody is present; turn off if that stops.
 PIR_OFF_DELAY = 10
 
@@ -392,6 +407,7 @@ def _components(
     )
 
     for n in sorted(dev.effective_buttons()):
+        topic = channel_topic(did, model, Kind.EVENT, "button", n)
         add(
             "event",
             "button",
@@ -399,11 +415,23 @@ def _components(
             {
                 "name": "External button" if n == BUTTON_COUNT else f"Button {n + 1}",
                 "device_class": "button",
-                "state_topic": channel_topic(did, model, Kind.EVENT, "button", n),
+                "state_topic": topic,
                 "event_types": BUTTON_EVENT_TYPES,
                 "value_template": '{"event_type":"{{ value }}"}',
             },
         )
+        # Device triggers (not entities) so automations can react to a specific action.
+        # "button_long_press" (payload "h") fires repeatedly while the button is held.
+        subtype = f"button_{n + 1}"
+        for payload, trigger_type in BUTTON_TRIGGERS.items():
+            out[f"trigger_button_{n}_{trigger_type}"] = {
+                "platform": "device_automation",
+                "automation_type": "trigger",
+                "type": trigger_type,
+                "subtype": subtype,
+                "topic": topic,
+                "payload": payload,
+            }
 
     for n in sorted(dev.effective_pirs()):
         add(

@@ -74,7 +74,7 @@ Base: `dingz/<id>/<model>/…`. According to the docs `<id>` defaults to the low
 - Inactive outputs do not appear at all. Outputs of type `power_socket` etc. still appear as `state/light/<n>`.
 - `state/led` is **not retained**; it only comes after a change or with the periodic status dump. Setting the colour from HA works.
 - Periodic status dump every few minutes (observed: 5 min per device, not retained): all `state/*`, `sensor/*`, `power/*`, `energy/*`, `state/led`, `last_alive`.
-- Buttons: HTTP `button/<N>` = MQTT `event/button/<N-1>`. Events `p`, `h` (every 1 s), `r`. `m<n>` not observed yet (cannot be simulated via HTTP).
+- Buttons: HTTP `button/<N>` = MQTT `event/button/<N-1>`. **Verified (FW 2.4.3, dz1f-pir, real taps):** every gesture starts with `p`, then the multi-click count `m<n>` arrives after the click window (`m1` single, `m2` double, …). The counter is **open-ended** — `m1`–`m6` observed live, no fixed maximum. A hold sends `p` then `h` every ~1 s, then `r` on release. A short click sends **no** `r`. `p` fires once at the start of every gesture (also before `m*`/`h`), so it is not a clean single-click signal.
 - `sensor/light` is an integer, `sensor/temperature` e.g. `21.0`.
 - `power/*` in W. `energy/*` is a counter in **Ws (joules)** (measured: ~50 W → +15,000 per 5 min); discovery converts to kWh via `value_template`. The counter is **not persistent**: after a reboot it restarts at 0 (verified: 4,481,994 Ws → 3,025 Ws). `state_class: total_increasing` makes HA treat the drop as a meter reset, so long-term statistics stay correct.
 - MQTT client IDs must be unique; a second connection with the same ID kicks out the first.
@@ -144,7 +144,7 @@ Purpose: find dingz devices that do not (yet) publish under `dingz/#`, show thei
 
 **Open points**:
 - Motor payload (`motion` vs. `state`) and `input`: no devices with motor/input available.
-- Observe multi-click events `m<n>` on real buttons.
+- Multi-click events `m<n>`: **verified** on real buttons (see the button note above); `m1`–`m6` observed, counter open-ended.
 - Special-character escaping in the `mqtt.uri` password, TLS (`mqtts://`, `mqtt.server.crt`).
 - POST format of `/services_config`: **confirmed** as a JSON partial update (see Set MQTT above); whether a reboot is needed after an `mqtt.uri` change is still unverified.
 - Behaviour of `/login` (session cookie?) with an active web interface password.
@@ -158,7 +158,7 @@ Purpose: find dingz devices that do not (yet) publish under `dingz/#`, show thei
 - **Light** → `light`; `schema: json` does not fit (dingz uses `turn` instead of `state`), hence `schema: template` with `command_on_template` / `command_off_template` / `state_template` / `brightness_template`. Convert brightness 0–100 ↔ HA 0–255.
 - **Motor** → `cover` with `position_topic`/`set_position_topic` (0 = closed, 100 = open, matches HA) and `tilt_*` for slats. Stop/open/close via `{"motion":n}`.
 - **Front LED** → `light` (RGB). Always created once the model is known (state is not retained).
-- **Buttons** → `event` (`event_types: [p, h, r, m1 … m5]`), optionally also `device_automation` triggers.
+- **Buttons** → one `event` entity per button (`event_types: [p, h, r, m1 … m5]`, shows the last action) **plus** `device_automation` triggers in the same device bundle (not entities, so no list clutter, available immediately): `m1`→`button_short_press`, `m2`→`button_double_press`, `m3`→triple, `m4`→quadruple, `m5`→quintuple, `h`→`button_long_press` (repeats while held), `r`→`button_long_release`; `subtype` = `button_<n+1>`. `p` is not exposed as a trigger. The click counter is open-ended (`m6`+ exist), but triggers stop at `m5` because HA has no standard trigger type past quintuple. Device triggers need no `unique_id` and carry `platform: device_automation` (the `BUTTON_TRIGGERS` map in `discovery.py`).
 - **PIR** → `binary_sensor` (`device_class: motion`). `s`/`ss` = on, `n` = off, plus `off_delay` (~10 s) as fallback if an `n` gets lost (`expire_after` would be wrong: it makes the entity *unavailable* instead of *off*). No runtime logic in the bridge needed.
 - **Sensors** → `sensor` with matching `device_class`/`state_class` (temperature, illuminance, power W, energy kWh `total_increasing` converted from Ws).
 - **Input** → `binary_sensor`.

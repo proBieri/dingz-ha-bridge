@@ -2,6 +2,7 @@
 
 ## 0.1.3
 
+- Buttons: added MQTT **device triggers** per action (short / double / triple / quadruple / quintuple press, long press, long release), so automations can react to a specific action without a template condition. The single `event` entity per button stays. Verified the dingz multi-click payloads on a real device (`m1`–`m6`; the counter is open-ended, triggers stop at quintuple because HA has no type beyond it).
 - Web UI: responsive layout for phones. The device table now stacks into one card per device on narrow screens instead of scrolling sideways; the detail list and the broker form stack into a single column.
 - Web UI: removed the "← Add-ons" link. Home Assistant runs ingress add-ons in a sandboxed iframe that may not navigate the surrounding frame, so the link 404'd on desktop and hung in the mobile app. Use the HA header and sidebar (enable **Show in sidebar** for the **Dingz** panel) instead.
 
