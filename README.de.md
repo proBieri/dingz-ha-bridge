@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="addon/logo.png" alt="dingz HA Bridge" width="360">
+</p>
+
 # dingz HA Bridge
 
 [English](README.md) · **Deutsch**

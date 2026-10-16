@@ -38,6 +38,7 @@ STATIC_FILES = {
     "": ("index.html", "text/html"),
     "app.js": ("app.js", "text/javascript"),
     "style.css": ("style.css", "text/css"),
+    "logo.svg": ("logo.svg", "image/svg+xml"),
 }
 CSRF_HEADER = "X-Dingz-UI"
 # A WLAN measurement is a radio scan on the device: cache it and run few at a time.

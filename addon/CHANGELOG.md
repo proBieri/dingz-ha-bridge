@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4
+
+- Web UI: show the logo in the header and as the browser tab icon (favicon).
+- Add-on icon and logo (shown in the add-on store and the sidebar).
+- Supersedes 0.1.3, whose images were never published (a CI formatting check failed on the tag).
+
 ## 0.1.3
 
 - Buttons: added MQTT **device triggers** per action (short / double / triple / quadruple / quintuple press, long press, long release), so automations can react to a specific action without a template condition. The single `event` entity per button stays. Verified the dingz multi-click payloads on a real device (`m1`–`m6`; the counter is open-ended, triggers stop at quintuple because HA has no type beyond it).

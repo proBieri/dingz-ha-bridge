@@ -39,6 +39,7 @@ header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; }
 .header-links { margin-left: auto; display: flex; gap: 12px; align-items: baseline; font-size: 13px; }
 a.update { font-weight: 600; color: var(--warn); }
 h1 { font-size: 20px; margin: 0; }
+.logo { width: 32px; height: 32px; border-radius: 7px; align-self: center; }
 h2 { font-size: 17px; margin: 0 0 8px; }
 h3 { font-size: 15px; margin: 20px 0 4px; }
 
